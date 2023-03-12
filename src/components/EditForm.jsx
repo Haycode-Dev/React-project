@@ -6,6 +6,7 @@ import { CheckIcon } from '@heroicons/react/24/solid'
 const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
   const [updatedTaskName, setUpdatedTaskName] = useState(editedTask.name);
 
+  // useEffect hook to listen for escape key press and close edit mode if pressed
   useEffect(()=> {
     const closeModalIfEscaped = (e) => {
       e.key === "Escape" && closeEditMode();
@@ -18,6 +19,7 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
     }
   }, [closeEditMode])
 
+  // function to handle form submission and update task
   const handleFormSubmit = (e) => {
     e.preventDefault();
     updateTask({...editedTask, name: updatedTaskName})
@@ -61,4 +63,5 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
     </div>
   )
 }
-export default EditForm
+
+export default EditForm;

@@ -1,24 +1,21 @@
 import { useState } from 'react';
 
-// styles
+// import styles
 import styles from './TaskItem.module.css';
 
-// Library imports
-
+// import library icons
 import { PencilSquareIcon  } from '@heroicons/react/24/outline';
 import { TrashIcon } from '@heroicons/react/24/outline';
 
 const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
+  // state for checkbox
   const [isChecked, setIsChecked ] = useState(task.checked);
 
-  const handleCheckboxChange = (e) =>{
-    setIsChecked(!isChecked);
-    toggleTask(task.id);
-  }
 
   return (
     <li className={styles.task}>
       <div className={styles["task-group"]}>
+        {/* task label */}
         <label
           htmlFor={task.id}
           className={styles.label}
@@ -27,6 +24,7 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
         </label>
       </div>
       <div className={styles["task-group"]}>
+        {/* edit button */}
         <button
           className='btn'
           aria-label={`Update ${task.name} Task`}
@@ -35,6 +33,7 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
           <PencilSquareIcon width={24} height={24} />
         </button>
 
+        {/* delete button */}
         <button
           className={`btn ${styles.delete}`}
           aria-label={`Delete ${task.name} Task`}
@@ -47,4 +46,5 @@ const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
     </li>
   )
 }
-export default TaskItem
+
+export default TaskItem;
